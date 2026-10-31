@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="../ConsolFootballSql.Domain/ConsolFootballSql.Domain.csproj" />
+  <Project Path="ConsolFootballSql.Application/ConsolFootballSql.Application.csproj" />
+  <Project Path="ConsolFootballSql.Infrastructure/ConsolFootballSql.Infrastructure.csproj" />
+  <Project Path="ConsolFootballSql.Ui/ConsolFootballSql.Ui.csproj" />
+</Solution>
