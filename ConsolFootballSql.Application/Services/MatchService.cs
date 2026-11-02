@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ConsolFootballSql.Application.Service
 {
-    internal class MatchService
+    public class MatchService
     {
     }
 }
