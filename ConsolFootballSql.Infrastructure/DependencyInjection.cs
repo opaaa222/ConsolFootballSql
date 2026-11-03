@@ -1,5 +1,6 @@
 ﻿using ConsolFootballSql.Application.Interfaces;
 using ConsolFootballSql.Application.InterFaces;
+using ConsolFootballSql.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
