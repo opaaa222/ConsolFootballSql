@@ -10,7 +10,7 @@ namespace ConsolFootballSql.Application.InterFaces
         List<Player> GetALL();
         List<Player> GetByTeamId(int teamId);
         Player? GetById(int id);
-        bool NumberTaken(string number, int teamId);
+        bool NumberTaken(int number, int teamId);
         void Add(Player player);
         void Update(Player player);
         void Delete(Player player);
