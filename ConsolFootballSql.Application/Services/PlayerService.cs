@@ -49,12 +49,25 @@ namespace ConsolFootballSql.Application.Service
                 Number = createPlayerDto.Number,
                 Position = createPlayerDto.Position,
                 TeamId = createPlayerDto.TeamId,
-                DateOfBirth = createPlayerDto.DateOfBirth
+                BirhDate = createPlayerDto.DateOfBirth
             });
+
+
+            
+
 
 
         }
 
+        public void Delete(int playerId)
+        {
+            var player = _playerRepository.GetById(playerId);
+            if (player == null)
+            {
+                throw new ArgumentException("Player not found.");
+            }
+            _playerRepository.Delete(player);
+        }
 
     }
 }

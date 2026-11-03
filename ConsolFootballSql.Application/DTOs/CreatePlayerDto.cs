@@ -5,5 +5,5 @@ using System.Text;
 
 namespace ConsolFootballSql.Application.DTOs
 {
-    public record CreatePlayerDto(string Name, string Number, POSITION Position, int TeamId, DateTime DateOfBirth);
+    public record CreatePlayerDto(string Name, int Number, POSITION Position, int TeamId, DateTime DateOfBirth);
 }

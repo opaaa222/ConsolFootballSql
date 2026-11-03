@@ -1,4 +1,4 @@
-﻿using ConsolFootballSql.Infrastructure.Folder;
+﻿using ConsolFootballSql.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 
