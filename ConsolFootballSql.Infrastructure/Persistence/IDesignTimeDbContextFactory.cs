@@ -1,6 +1,9 @@
-﻿using ConsolFootballSql.Infrastructure.Persistence;
+﻿using ConsolFootballSql.Application.Interfaces;
+using ConsolFootballSql.Infrastructure.Persistence;
+using ConsolFootballSql.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace ConsolFootballSql.Infrastructure.Persistence
 {
@@ -13,7 +16,7 @@ namespace ConsolFootballSql.Infrastructure.Persistence
                 new DbContextOptionsBuilder<FootballDbContext>();
 
             optionsBuilder.UseSqlServer(
-                "Server=DESKTOP-QV3K8PJ;Database=FootballDb;Trusted_Connection=True;TrustServerCertificate=True");
+                "Server=DESKTOP-QV3K8PJ\\SQLEXPRESS;Database=FootballDb;Trusted_Connection=True;TrustServerCertificate=True");
 
             return new FootballDbContext(optionsBuilder.Options);
         }

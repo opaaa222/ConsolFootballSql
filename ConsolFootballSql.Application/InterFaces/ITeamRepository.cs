@@ -1,4 +1,5 @@
-﻿using ConsolFootballSql.Domain.Models.Entities;
+﻿
+using ConsolFootballSql.Domain.Models.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;

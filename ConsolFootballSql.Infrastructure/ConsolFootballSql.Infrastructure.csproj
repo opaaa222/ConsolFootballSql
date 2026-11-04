@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ConsolFootballSql.Application\ConsolFootballSql.Application.csproj" />
+    <ProjectReference Include="..\ConsolFootballSql.Domain\ConsolFootballSql.Domain.csproj" />
   </ItemGroup>
 
 </Project>
