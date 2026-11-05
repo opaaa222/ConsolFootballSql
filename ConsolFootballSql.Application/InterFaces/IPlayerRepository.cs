@@ -8,6 +8,7 @@ namespace ConsolFootballSql.Application.InterFaces
     public  interface IPlayerRepository
     {
         List<Player> GetALL();
+        List<Player> GetTopScorers();
         List<Player> GetByTeamId(int teamId);
         Player? GetById(int id);
         bool NumberTaken(int number, int teamId);

@@ -18,6 +18,10 @@ namespace ConsolFootballSql.Infrastructure.Repositories
         public List<Player> GetByTeamId(int teamId) => _context.Players.Include(p => p.Team).Where(p => p.TeamId == teamId).ToList();
         public Player? GetById(int id) => _context.Players.Find(id);
         public bool NumberTaken(int number, int teamId) => _context.Players.Any(p => p.Number == number && p.TeamId == teamId);
+
+        public List<Player> GetTopScorers() => _context.Players.Include(p => p.Team).
+            Include(p => p.Goals).ToList();
+
         public void Add(Player player)
         {
             _context.Players.Add(player);

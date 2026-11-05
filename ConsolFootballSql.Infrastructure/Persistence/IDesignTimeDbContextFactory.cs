@@ -16,7 +16,7 @@ namespace ConsolFootballSql.Infrastructure.Persistence
                 new DbContextOptionsBuilder<FootballDbContext>();
 
             optionsBuilder.UseSqlServer(
-                "Server=DESKTOP-QV3K8PJ\\SQLEXPRESS;Database=FootballDb;Trusted_Connection=True;TrustServerCertificate=True");
+                "Server=DESKTOP-QV3K8PJ\\SQLEXPRESS;Database=FootballCleanDb;Trusted_Connection=True;TrustServerCertificate=True");
 
             return new FootballDbContext(optionsBuilder.Options);
         }

@@ -18,4 +18,13 @@ public static class DependencyInjection
         services.AddScoped<IMatchRepository, MatchRepository>();
         return services;
     }
+
+    public static void ApplyMigrations(this IServiceProvider serviceProvider)
+    {
+        using var scope = serviceProvider.CreateScope();
+        var dbContext = scope.ServiceProvider.GetRequiredService<FootballDbContext>();
+        dbContext.Database.Migrate();
+        DbSeeder.SeedLaLigaTeams(dbContext);
+    }
+
 }

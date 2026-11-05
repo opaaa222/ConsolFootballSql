@@ -18,6 +18,18 @@ var provider = new ServiceCollection()
     .AddScoped<MatchService>()
     .BuildServiceProvider();
 
+try
+{
+    provider.ApplyMigrations();
+    Console.WriteLine("Baza mzadaa.");
+}
+catch (Exception ex)
+{
+    Console.WriteLine("Migraciis shecdoma: " + ex.Message);
+    Console.WriteLine(ex.InnerException?.Message);
+    return;
+}
+
 while (true)
 {
     using var scope = provider.CreateScope();
@@ -28,8 +40,8 @@ while (true)
     Console.WriteLine("\n=== PEKHBURTI ===");
     Console.WriteLine("1. Gundebi          2. Gundis damateba     3. Gundis washla");
     Console.WriteLine("4. Motamasheebi     5. Motamashis damateba");
-    Console.WriteLine("6. Matchebi         7. Matchis shekmna     8. Golis damateba");
-    Console.WriteLine("0. Gasvla");
+    Console.WriteLine("6. Matchebi         7. Matchis shekmna     8. Golis damateba" );
+    Console.WriteLine("9. Top Scorers      0. Gasvla");
 
     var choice = Ask("Archevani");
     if (choice == "0") break;
@@ -45,7 +57,7 @@ while (true)
 
             case "2":
                 teams.Create(new CreateTeamDto(
-                    Ask("Saxeli"), Ask("Qalaqi"), AskInt("Daarsebis weli")));
+                    Ask("Saxeli"), Ask("Qalaqi"), AskInt("Daarsebis weli (mxolod weli, magalitad 1899)")));
                 Console.WriteLine("Gundi daemata.");
                 break;
 
@@ -62,7 +74,7 @@ while (true)
             case "5":
                 var name = Ask("Saxeli");
                 var number = AskInt("Nomeri");
-                var birth = AskDate("Dabadebis tarighi (magalitad 25.12.2000)");
+                var birth = AskDate("Dabadebis tarighi");
                 var pos = AskInt("Pozicia (0-mekare, 1-damcveli, 2-naxevardamcveli, 3-tavdamsxmeli)");
                 if (!Enum.IsDefined(typeof(POSITION), pos))
                     throw new ArgumentException("Pozicia arasworia.");
@@ -89,6 +101,19 @@ while (true)
                     AskInt("Matchis Id"), AskInt("Motamashis Id"), AskInt("Wuti")));
                 Console.WriteLine("Goli daemata.");
                 break;
+            case "9":
+                var top = players.GetTopScorers();
+                if (top.Count == 0)
+                {
+                    Console.WriteLine("Ar aris top motamashebi.");
+                    break;
+                }
+                var place = 1;
+                foreach (var s in top)
+                    Console.WriteLine($"{place++}. {s.PlayerName} ({s.TeamName}) - {s.Goals} goli");
+                break;
+
+
 
             default:
                 Console.WriteLine("Arasworia archevani.");
@@ -98,6 +123,12 @@ while (true)
     catch (Exception ex)
     {
         Console.WriteLine($"Shecdoma: {ex.Message}");
+        var inner = ex.InnerException;
+        while (inner != null)
+        {
+            Console.WriteLine($"  Mizezi: {inner.Message}");
+            inner = inner.InnerException;
+        }
     }
 }
 
@@ -120,7 +151,11 @@ static DateTime AskDate(string label)
 {
     while (true)
     {
-        if (DateTime.TryParse(Ask(label), out var v)) return v;
-        Console.WriteLine("Tarighi arasworia.");
+        var input = Ask(label + " [dd.MM.yyyy]");
+        if (DateTime.TryParseExact(input, "dd.MM.yyyy",
+                System.Globalization.CultureInfo.InvariantCulture,
+                System.Globalization.DateTimeStyles.None, out var v))
+            return v;
+        Console.WriteLine("Tarighi arasworia. Magalitad: 24.11.2001");
     }
 }

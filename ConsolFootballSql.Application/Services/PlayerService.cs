@@ -58,6 +58,15 @@ namespace ConsolFootballSql.Application.Service
 
 
         }
+        public List<TopScorerDto> GetTopScorers(int count = 10) =>
+       _playerRepository.GetTopScorers()
+           .Select(p => new TopScorerDto(p.Name, p.Team.Name, p.Goals.Count))
+           .Where(s => s.Goals > 0)
+           .OrderByDescending(s => s.Goals)
+           .ThenBy(s => s.PlayerName)
+           .Take(count)
+           .ToList();
+
 
         public void Delete(int playerId)
         {
