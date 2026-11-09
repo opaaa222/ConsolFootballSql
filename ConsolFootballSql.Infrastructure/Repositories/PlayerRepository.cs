@@ -20,7 +20,7 @@ namespace ConsolFootballSql.Infrastructure.Repositories
         public bool NumberTaken(int number, int teamId) => _context.Players.Any(p => p.Number == number && p.TeamId == teamId);
 
         public List<Player> GetTopScorers() => _context.Players.Include(p => p.Team).
-            Include(p => p.Goals).ToList();
+            Include(p => p.Name).ToList();
 
         public void Add(Player player)
         {

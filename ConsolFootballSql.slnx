@@ -2,5 +2,6 @@
   <Project Path="ConsolFootballSql.Application/ConsolFootballSql.Application.csproj" />
   <Project Path="ConsolFootballSql.Domain/ConsolFootballSql.Domain.csproj" />
   <Project Path="ConsolFootballSql.Infrastructure/ConsolFootballSql.Infrastructure.csproj" />
+  <Project Path="ConsolFootballSql.Test/ConsolFootballSql.Test.csproj" Id="19ac6bb4-49ed-4884-8253-1a656ac8c045" />
   <Project Path="ConsolFootballSql.Ui/ConsolFootballSql.Ui.csproj" />
 </Solution>

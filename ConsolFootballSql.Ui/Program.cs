@@ -68,7 +68,7 @@ while (true)
 
             case "4":
                 foreach (var p in players.GetAll())
-                    Console.WriteLine($"{p.Id}. {p.Name} #{p.Number} {p.Position} - {p.Team.Name}");
+                    Console.WriteLine($"{p.Id}. {p.Name} #{p.Number} {p.Position} - ");
                 break;
 
             case "5":

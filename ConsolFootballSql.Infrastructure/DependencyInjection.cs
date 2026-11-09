@@ -25,6 +25,7 @@ public static class DependencyInjection
         var dbContext = scope.ServiceProvider.GetRequiredService<FootballDbContext>();
         dbContext.Database.Migrate();
         DbSeeder.SeedLaLigaTeams(dbContext);
+        DbSeeder.SeedPlayers(dbContext);
     }
 
 }
